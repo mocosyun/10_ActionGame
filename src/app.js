@@ -39,7 +39,7 @@ var backgroundLayer = cc.Layer.extend({
    ctor: function() {
       this._super();
 
-      var backgroundSprite = cc.Sprite.create(res.background_png);
+      var backgroundSprite = cc.Sprite.create(res.background_back_png);
       var size = backgroundSprite.getContentSize();
       //console.log(size);
       this.addChild(backgroundSprite);
@@ -59,14 +59,19 @@ var levelLayer = cc.Layer.extend({
          for (j = 0; j < 10; j++) {
             switch (level[i][j]) {
                case 1:
-                  var groundSprite = cc.Sprite.create(res.ground_png);
-                  groundSprite.setPosition(tileSize / 2 + tileSize * j, 96 * (7 - i) - tileSize / 2);
+                  var groundSprite = cc.Sprite.create(res.background_front_png);
+                  groundSprite.setPosition(tileSize / 2 + tileSize * j, 96 * (7.8 - i) - tileSize / 2);
                   this.addChild(groundSprite);
                   break;
                case 2:
                   var blockSprite = cc.Sprite.create(res.block_png);
                   blockSprite.setPosition(tileSize / 2 + tileSize * j, 96 * (7 - i) - tileSize / 2);
                   this.addChild(blockSprite);
+                  break;
+              case 3:
+                  var curtainSprite = cc.Sprite.create(res.curtain_png);
+                  curtainSprite.setPosition(tileSize / -0.38 + tileSize * j, 85.5 * (9.9 - i) - tileSize / 2);
+                  this.addChild(curtainSprite);
                   break;
             }
          }
