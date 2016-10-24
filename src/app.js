@@ -40,13 +40,17 @@ var backgroundLayer = cc.Layer.extend({
       this._super();
 
       var backgroundSprite = cc.Sprite.create(res.background_back_png);
+      var ui_paneisSprite = cc.Sprite.create(res.ui_paneis_png);
       var size = backgroundSprite.getContentSize();
       //console.log(size);
       this.addChild(backgroundSprite);
+      this.addChild(ui_paneisSprite);
       //console.log(winSize.width,winSize.height);
       backgroundSprite.setPosition(winSize.width / 2, winSize.height / 2);
+      ui_paneisSprite.setPosition(winSize.width / 2, winSize.height / 0.9);
       //背景画像を画面の大きさに合わせるためのScaling処理
       backgroundSprite.setScale(winSize.width / size.width, winSize.height / size.height);
+      ui_paneisSprite.setScale(winSize.width / size.width, winSize.height / size.height);
    }
 
 });
@@ -65,12 +69,17 @@ var levelLayer = cc.Layer.extend({
                   break;
                case 2:
                   var blockSprite = cc.Sprite.create(res.block_png);
-                  blockSprite.setPosition(tileSize / 2 + tileSize * j, 96 * (7 - i) - tileSize / 2);
+                  blockSprite.setPosition(tileSize / 2 + tileSize * j, 90 * (7 - i) - tileSize / 2);
                   this.addChild(blockSprite);
                   break;
               case 3:
                   var curtainSprite = cc.Sprite.create(res.curtain_png);
                   curtainSprite.setPosition(tileSize / -0.38 + tileSize * j, 85.5 * (9.9 - i) - tileSize / 2);
+                  this.addChild(curtainSprite);
+                  break;
+              case 4:
+                  var curtainSprite = cc.Sprite.create(res.curtain2_png);
+                  curtainSprite.setPosition(tileSize / 1.5 + tileSize * j, 84.5 * (9.9 - i) - tileSize / 2);
                   this.addChild(curtainSprite);
                   break;
             }
@@ -183,11 +192,15 @@ var Player = cc.Sprite.extend({
       // スプライトフレームを取得 player01,player02はplistの中で定義されいいる
       var frame1 = cc.spriteFrameCache.getSpriteFrame("player01");
       var frame2 = cc.spriteFrameCache.getSpriteFrame("player02");
+      var frame3 = cc.spriteFrameCache.getSpriteFrame("player03");
+      var frame4 = cc.spriteFrameCache.getSpriteFrame("player04");
 
       //スプライトフレームを配列に登録
       var animationframe = [];
       animationframe.push(frame1);
       animationframe.push(frame2);
+      animationframe.push(frame3);
+      animationframe.push(frame4);
       //スプライトフレームの配列を連続再生するアニメーションの定義
       var animation = new cc.Animation(animationframe, 0.08);
       //永久ループのアクションを定義
