@@ -4,10 +4,10 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>player01</key>
+            <key>zombie01</key>
             <dict>
                 <key>frame</key>
-                <string>{{55,265},{115,115}}</string>
+                <string>{{0,12},{130,115}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -15,10 +15,10 @@
                 <key>sourceSize</key>
                 <string>{96,96}</string>
             </dict>
-            <key>player02</key>
+            <key>zombie02</key>
             <dict>
                 <key>frame</key>
-                <string>{{55,395},{115,115}}</string>
+                <string>{{128,12},{130,115}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -26,10 +26,10 @@
                 <key>sourceSize</key>
                 <string>{96,96}</string>
             </dict>
-            <key>player03</key>
+            <key>zombie03</key>
             <dict>
                 <key>frame</key>
-                <string>{{245,395},{115,115}}</string>
+                <string>{{257,12},{130,115}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -37,10 +37,10 @@
                 <key>sourceSize</key>
                 <string>{96,96}</string>
             </dict>
-            <key>player04</key>
+            <key>zombie04</key>
             <dict>
                 <key>frame</key>
-                <string>{{435,395},{115,115}}</string>
+                <string>{{385,12},{130,115}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -48,10 +48,43 @@
                 <key>sourceSize</key>
                 <string>{96,96}</string>
             </dict>
-            <key>player05</key>
+            <key>zombie05</key>
             <dict>
                 <key>frame</key>
-                <string>{{625,395},{115,115}}</string>
+                <string>{{1,140},{130,115}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceSize</key>
+                <string>{96,96}</string>
+            </dict>
+            <key>zombie06</key>
+            <dict>
+                <key>frame</key>
+                <string>{{129,140},{130,115}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceSize</key>
+                <string>{96,96}</string>
+            </dict>
+            <key>zombie07</key>
+            <dict>
+                <key>frame</key>
+                <string>{{258,140},{130,115}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceSize</key>
+                <string>{96,96}</string>
+            </dict>
+            <key>zombie08</key>
+            <dict>
+                <key>frame</key>
+                <string>{{387,140},{130,115}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
