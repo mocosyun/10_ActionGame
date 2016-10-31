@@ -6,7 +6,7 @@ var level = [
    [0, 0, 0, 0, 0, 0, 0, 2, 2, 2],
    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
    [0, 0, 0, 2, 2, 2, 0, 0, 0, 0],
-   [0, 0, 0, 0, 3, 0, 0, 0, 4, 0],
+   [0, 0, 0, 0, 3, 7, 0, 0, 4, 0],
    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 var tileSize = 96;
@@ -29,12 +29,14 @@ var gameScene = cc.Scene.extend({
       this.addChild(level);
       var player = new playerLayer();
       this.addChild(player);
-      var enemys = new enemyLayer();
+      var enemys = new BatLayer();
       this.addChild(enemys);
-      var enemys2 = new enemyLayer2();
+      var enemys2 = new BatLayer2();
       this.addChild(enemys2);
-      var enemys3 = new enemyLayer3();
+      var enemys3 = new zombieLayer();
       this.addChild(enemys3);
+      var coin = new coinLayer();
+      this.addChild(coin)
    }
 });
 

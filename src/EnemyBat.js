@@ -3,7 +3,7 @@ var RiseHeight = 240; //Rise上昇
 
 var enemyBat;
 
-var enemyLayer = cc.Layer.extend({
+var BatLayer = cc.Layer.extend({
    ctor: function() {
       this._super();
       enemyBat = new EnemyBat();

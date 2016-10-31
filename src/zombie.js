@@ -3,7 +3,7 @@ var RiseHeight = 240; //Rise上昇
 
 var enemyBat;
 
-var enemyLayer3 = cc.Layer.extend({
+var zombieLayer = cc.Layer.extend({
    ctor: function() {
       this._super();
       enemyzombie = new Enemyzombie();
@@ -65,11 +65,36 @@ var Enemyzombie = cc.Sprite.extend({
   update: function(dt) {
     this.FrameCount++;
     //4フレームに1回　こうもりの移動計算する
-    if (this.FrameCount % 4 == 0) {
+    if (this.FrameCount % 8 == 0) {
       //プレイヤーの位置をこうもりの位置の差を計算
       var offset_x = player.getPosition().x - this.getPosition().x;
       var offset_y = player.getPosition().y - this.getPosition().y;
-      //offset_x = offset_x*Math.sin(offset_x);
+
+      //蝙蝠のｘ移動速度をプレイヤとこうもりの間の距離の0.05倍にする
+      var velocity_x = lerp(this.velocity.x, offset_x, 0.005);
+      var velocity_x = this.velocity.x;
+
+      //フォバリング高度より上なら下降させる。　降下下限高度より下にいたら、上昇させる
+      if (this.getPosition().x > HoverHeight) velocity_x += -0.035;
+      if (this.getPosition().x < RiseHeight) velocity_x += 0.05;
+
+      if (this.getPosition().x < player.x + 20) velocity_x += 0.05;
+
+      velocity_x += 0.075 * Math.sin(this.FrameCount * 0.015) * Math.sin(this.FrameCount * 0.04);
+
+      //console.log(velocity_x, velocity_y);
+
+      this.velocity.x = velocity_x;
+      this.velocity.x = velocity_x;
+
+      //  console.log(MoveDirection, this.velocity.x, offset.x);
+      if (this.velocity.x <= 0)
+        this.setFlippedX(true);
+      if (this.velocity.x > 0)
+        this.setFlippedX(false);
+
+      this.setPosition(this.getPosition().x + this.velocity.x, this.getPosition().y + this.velocity.y);
+
     }
   }
 });
