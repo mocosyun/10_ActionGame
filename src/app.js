@@ -6,7 +6,7 @@ var level = [
    [0, 0, 0, 0, 0, 0, 0, 2, 2, 2],
    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
    [0, 0, 0, 2, 2, 2, 0, 0, 0, 0],
-   [0, 0, 0, 0, 3, 7, 0, 0, 4, 0],
+   [0, 8, 0, 0, 3, 7, 0, 0, 4, 0],
    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 var tileSize = 96;
@@ -25,6 +25,12 @@ var gameScene = cc.Scene.extend({
 
       var background = new backgroundLayer();
       this.addChild(background);
+      var curtain = new LcurtainLayer();
+      this.addChild(curtain)
+      var curtain = new RcurtainLayer();
+      this.addChild(curtain)
+      var ui_paneis = new ui_paneisLayer();
+      this.addChild(ui_paneis);
       var level = new levelLayer();
       this.addChild(level);
       var player = new playerLayer();
@@ -35,6 +41,8 @@ var gameScene = cc.Scene.extend({
       this.addChild(enemys2);
       var enemys3 = new zombieLayer();
       this.addChild(enemys3);
+      var enemys4 = new slime_greenLayer();
+      this.addChild(enemys4);
       var coin = new coinLayer();
       this.addChild(coin)
    }
@@ -46,19 +54,57 @@ var backgroundLayer = cc.Layer.extend({
       this._super();
 
       var backgroundSprite = cc.Sprite.create(res.background_back_png);
-      var ui_paneisSprite = cc.Sprite.create(res.ui_paneis_png);
       var size = backgroundSprite.getContentSize();
       //console.log(size);
       this.addChild(backgroundSprite);
-      this.addChild(ui_paneisSprite);
       //console.log(winSize.width,winSize.height);
       backgroundSprite.setPosition(winSize.width / 2, winSize.height / 2);
-      ui_paneisSprite.setPosition(winSize.width / 2, winSize.height / 0.9);
       //背景画像を画面の大きさに合わせるためのScaling処理
       backgroundSprite.setScale(winSize.width / size.width, winSize.height / size.height);
-      ui_paneisSprite.setScale(winSize.width / size.width, winSize.height / size.height);
    }
+});
 
+var ui_paneisLayer = cc.Layer.extend({
+   ctor: function() {
+      this._super();
+
+      var ui_paneisSprite = cc.Sprite.create(res.ui_paneis_png);
+      var size = ui_paneisSprite.getContentSize();
+      //console.log(size);
+      this.addChild(ui_paneisSprite);
+      //console.log(winSize.width,winSize.height);
+      ui_paneisSprite.setPosition(winSize.width / 2, winSize.height / 0.9);
+      //背景画像を画面の大きさに合わせるためのScaling処理
+      //ui_paneisSprite.setScale(winSize.width / size.width, winSize.height / size.height);
+   }
+});
+
+var LcurtainLayer = cc.Layer.extend({
+  ctor: function() {
+    this._super();
+
+    var curtainSprite = cc.Sprite.create(res.curtain_png);
+    var size = curtainSprite.getContentSize();
+
+    this.addChild(curtainSprite);
+
+    curtainSprite.setPosition(winSize.width / 7.5, winSize.height / 2);
+    curtainSprite.setScale(1.2);
+  }
+});
+
+var RcurtainLayer = cc.Layer.extend({
+  ctor: function() {
+    this._super();
+
+    var curtainSprite = cc.Sprite.create(res.curtain2_png);
+    var size = curtainSprite.getContentSize();
+
+    this.addChild(curtainSprite);
+
+    curtainSprite.setPosition(winSize.width / 1.15, winSize.height / 2);
+    curtainSprite.setScale(1.2);
+  }
 });
 
 var levelLayer = cc.Layer.extend({
@@ -78,24 +124,11 @@ var levelLayer = cc.Layer.extend({
                   blockSprite.setPosition(tileSize / 2 + tileSize * j, 90 * (7 - i) - tileSize / 2);
                   this.addChild(blockSprite);
                   break;
-              case 3:
-                  var curtainSprite = cc.Sprite.create(res.curtain_png);
-                  curtainSprite.setPosition(tileSize / -0.38 + tileSize * j, 85.5 * (9.9 - i) - tileSize / 2);
-                  curtainSprite.setScale(1, 1.1);
-                  this.addChild(curtainSprite);
-                  break;
-              case 4:
-                  var curtainSprite = cc.Sprite.create(res.curtain2_png);
-                  curtainSprite.setPosition(tileSize / 1.5 + tileSize * j, 84.5 * (9.9 - i) - tileSize / 2);
-                  curtainSprite.setScale(1, 1.1);
-                  this.addChild(curtainSprite);
-                  break;
             }
          }
       }
    }
 });
-
 
 var player;
 var playerLayer = cc.Layer.extend({
@@ -126,7 +159,6 @@ var playerLayer = cc.Layer.extend({
       jumpBtn.setOpacity(128);
       jumpBtn.setTag(3);
 
-
       cc.eventManager.addListener(listener, leftBtn);
       cc.eventManager.addListener(listener.clone(), rightBtn);
       cc.eventManager.addListener(listener.clone(), jumpBtn);
@@ -134,7 +166,6 @@ var playerLayer = cc.Layer.extend({
       cc.eventManager.addListener(keylistener, this);
 
    }
-
 });
 
 
@@ -148,7 +179,7 @@ var Player = cc.Sprite.extend({
       for (i = 0; i < 7; i++) {　　　　　　
          for (j = 0; j < 10; j++) {
             if (level[i][j] == 3) {
-               this.setPosition(tileSize / 2 + tileSize * j, 96 * (7 - i) - tileSize / 2);
+               this.setPosition(tileSize / 2 + tileSize * j, 93 * (7 - i) - tileSize / 2);
                playerPosition = {
                   x: j,
                   y: i
@@ -185,7 +216,6 @@ var Player = cc.Sprite.extend({
       this.scheduleUpdate();
    },
 
-
    //移動のため
    update: function(dt) {
       console.log(this.jumpFlag, this.ySpeed);
@@ -209,7 +239,6 @@ var Player = cc.Sprite.extend({
    }
 
 });
-
 
 //タッチリスナーの実装
 var listener = cc.EventListener.create({
@@ -290,5 +319,4 @@ var keylistener = cc.EventListener.create({
       rightBtn.setOpacity(128);
       jumpBtn.setOpacity(128);
    },
-
 });

@@ -20,10 +20,12 @@ var res = {
    particle_dot_png: "res/particle_dot.png",
 
    slime_green_frames: "res/slime_green_frames.png",
+   slime_green_plist: "res/slime_green.plist",
    slime_red_frames: "res/slime_red_frames.png",
 
    sparkle_frames: "res/sparkle_frames.png",
    title_png: "res/title.png",
+   start_png: "res/btn_play.png",
 
    ui_gauge_fill_png: "res/ui_gauge_fill.png",
    ui_paneis_png: "res/ui_panels.png",

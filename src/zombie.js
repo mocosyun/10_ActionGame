@@ -23,7 +23,7 @@ var Enemyzombie = cc.Sprite.extend({
     for (i = 0; i < 7; i++) {　　　　　　
       for (j = 0; j < 10; j++) {
         if (level[i][j] == 4) {
-          this.setPosition(tileSize / 2 + tileSize * j, 96 * (7 - i) - tileSize / 2);
+          this.setPosition(tileSize / 2 + tileSize * j, 93 * (7 - i) - tileSize / 2);
         }
       }
     }
@@ -52,7 +52,7 @@ var Enemyzombie = cc.Sprite.extend({
     animationframe.push(frame7);
     animationframe.push(frame8);
     //スプライトフレームの配列を連続再生するアニメーションの定義
-    var animation = new cc.Animation(animationframe, 0.18);
+    var animation = new cc.Animation(animationframe, 0.23);
     //永久ループのアクションを定義
     var action = new cc.RepeatForever(new cc.animate(animation));
     //実行
@@ -65,26 +65,12 @@ var Enemyzombie = cc.Sprite.extend({
   update: function(dt) {
     this.FrameCount++;
     //4フレームに1回　こうもりの移動計算する
-    if (this.FrameCount % 8 == 0) {
+    if (this.FrameCount % 12 == 0) {
       //プレイヤーの位置をこうもりの位置の差を計算
       var offset_x = player.getPosition().x - this.getPosition().x;
-      var offset_y = player.getPosition().y - this.getPosition().y;
 
       //蝙蝠のｘ移動速度をプレイヤとこうもりの間の距離の0.05倍にする
-      var velocity_x = lerp(this.velocity.x, offset_x, 0.005);
-      var velocity_x = this.velocity.x;
-
-      //フォバリング高度より上なら下降させる。　降下下限高度より下にいたら、上昇させる
-      if (this.getPosition().x > HoverHeight) velocity_x += -0.035;
-      if (this.getPosition().x < RiseHeight) velocity_x += 0.05;
-
-      if (this.getPosition().x < player.x + 20) velocity_x += 0.05;
-
-      velocity_x += 0.075 * Math.sin(this.FrameCount * 0.015) * Math.sin(this.FrameCount * 0.04);
-
-      //console.log(velocity_x, velocity_y);
-
-      this.velocity.x = velocity_x;
+      var velocity_x = lerp(this.velocity.x, offset_x * 0.15, 0.005);
       this.velocity.x = velocity_x;
 
       //  console.log(MoveDirection, this.velocity.x, offset.x);
