@@ -1,7 +1,7 @@
 var HoverHeight = 300; //ホバリング
 var RiseHeight = 240; //Rise上昇
 
-var enemyBat;
+var zombie;
 
 var zombieLayer = cc.Layer.extend({
    ctor: function() {
@@ -65,7 +65,7 @@ var Enemyzombie = cc.Sprite.extend({
   update: function(dt) {
     this.FrameCount++;
     //4フレームに1回　こうもりの移動計算する
-    if (this.FrameCount % 12 == 0) {
+    if (this.FrameCount % 10 == 0) {
       //プレイヤーの位置をこうもりの位置の差を計算
       var offset_x = player.getPosition().x - this.getPosition().x;
 

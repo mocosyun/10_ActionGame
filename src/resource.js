@@ -22,6 +22,9 @@ var res = {
    slime_green_frames: "res/slime_green_frames.png",
    slime_green_plist: "res/slime_green.plist",
    slime_red_frames: "res/slime_red_frames.png",
+   slime_red_plist: "res/slime_red.plist",
+   slime_yellow_frames: "res/slime_yellow_frames.png",
+   slime_yellow_plist: "res/slime_yellow.plist",
 
    sparkle_frames: "res/sparkle_frames.png",
    title_png: "res/title.png",
