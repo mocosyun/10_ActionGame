@@ -32,6 +32,9 @@ var res = {
 
    ui_gauge_fill_png: "res/ui_gauge_fill.png",
    ui_paneis_png: "res/ui_panels.png",
+   ui_gauge_plist: "res/gauge1.plist",
+   ui_gauge_plist: "res/gauge2.plist",
+   ui_gauge_plist: "res/gauge3.plist",
 
    zombie_frames: "res/zombie_frames.png",
    zombie_plist: "res/zombie.plist",
