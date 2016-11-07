@@ -5,8 +5,9 @@ var MyLayer = cc.Layer.extend({
 
         var size = cc.director.getWinSize();
 
-        var TitleBG_png = cc.Sprite.create(res.TitleBG_png);
-         TitleBG_png.setPosition(size.width / 2, size.height / 2);
+        var TitleBG_png = cc.Sprite.create(res.background_back_png);
+        TitleBG_png.setPosition(size.width / 2, size.height / 2);
+        TitleBG_png.setScale(1.2);
         this.addChild(TitleBG_png);
 
         var Title_png = cc.Sprite.create(res.title_png);
